@@ -1,0 +1,376 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Corporation - Welcome</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts para dar um clima misterioso/corporativo antigo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Share+Tech+Mono&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"Share Tech Mono"', 'Courier Prime', 'monospace'],
+                        sans: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    colors: {
+                        corp: {
+                            900: '#0a0b10',
+                            800: '#11131c',
+                            700: '#1b1e2e',
+                            glow: '#00ffcc',
+                            alert: '#ff3b30'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos adicionais para efeitos de ARG */
+        .glow-text {
+            text-shadow: 0 0 8px rgba(0, 255, 204, 0.6);
+        }
+        .glow-border {
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+        }
+        .custom-highlight {
+            background: rgba(0, 255, 204, 0.15);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #00ffcc;
+            font-family: 'Share Tech Mono', monospace;
+            text-transform: lowercase;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .custom-highlight:hover {
+            background: rgba(0, 255, 204, 0.3);
+            box-shadow: 0 0 8px rgba(0, 255, 204, 0.5);
+        }
+        .number-highlight {
+            background: rgba(255, 59, 48, 0.15);
+            border: 1px dashed rgba(255, 59, 48, 0.5);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #ff5252;
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: bold;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body class="bg-corp-900 text-slate-300 font-sans min-h-screen flex flex-col selection:bg-corp-glow selection:text-corp-900">
+
+    <!-- Topo da página / Header -->
+    <header class="border-b border-slate-800 bg-corp-800/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
+                <!-- Logo Minimalista de ARG -->
+                <div class="w-8 h-8 rounded border border-corp-glow flex items-center justify-center text-corp-glow font-mono font-bold text-lg animate-pulse">
+                    M
+                </div>
+                <span class="font-mono text-xl font-bold tracking-wider text-white">
+                    My Corporation<span class="text-corp-glow">!</span>
+                </span>
+            </div>
+            
+            <nav class="flex space-x-1 font-mono text-sm">
+                <button onclick="switchTab('home')" id="nav-home" class="px-4 py-2 rounded text-corp-glow bg-corp-700/50 border border-corp-glow/30 transition-all">
+                    Início
+                </button>
+                <button onclick="switchTab('codigo')" id="nav-codigo" class="px-4 py-2 rounded text-slate-400 hover:text-white transition-all relative">
+                    Código 
+                    <span class="absolute top-1 right-1 flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-corp-glow opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-corp-glow"></span>
+                    </span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-grow max-w-4xl mx-auto px-6 py-12 w-full flex flex-col justify-center">
+        
+        <!-- ABA: HOME -->
+        <div id="tab-home" class="space-y-12 block">
+            <!-- Hero / Intro Visual -->
+            <div class="text-center space-y-4">
+                <div class="inline-block px-3 py-1 bg-slate-800/60 rounded-full text-xs text-slate-400 font-mono tracking-widest uppercase">
+                    Status da Rede: <span class="text-green-500 font-bold">Online</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+                    Inovação Sem <span class="text-transparent bg-clip-text bg-gradient-to-r from-corp-glow to-blue-400">Propósito</span>.
+                </h1>
+                <p class="text-slate-400 max-w-md mx-auto text-sm md:text-base">
+                    Servindo a humanidade de formas que você ainda não consegue compreender.
+                </p>
+            </div>
+
+            <!-- Bloco de Texto Principal do Usuário -->
+            <div class="bg-corp-800 border border-slate-800 rounded-xl p-8 md:p-12 glow-border relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-corp-glow/5 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <h2 class="font-mono text-xs text-corp-glow mb-4 tracking-widest uppercase">// COMUNICAÇÃO INTERNA</h2>
+                
+                <p class="text-lg md:text-xl leading-relaxed text-slate-200">
+                    "E aí, meu caro cliente! Bem-vindo à My Corporation, o único lugar onde você pode fazer absolutamente nada e ainda sair ganhando! A gente fundou esse site lá em 
+                    <!-- Número 1998 Destacado -->
+                    <span class="number-highlight" title="O início de tudo">1998</span> 
+                    só para te passar a visão de um código novo e misterioso chamado 
+                    <!-- ABABABABTRES em minúsculo e destacado -->
+                    <span class="custom-highlight">ababababtres</span>! 
+                    Se liga, vou te ensinar como decifrar essa parada... 
+                    <!-- ACESSE A ABA *CÓDIGO* PARA SABER MAIS. -->
+                    <span class="text-slate-400 font-normal">então corre lá e acesse a aba</span> 
+                    <span onclick="triggerCodeTabRedirect()" class="custom-highlight cursor-pointer underline decoration-dotted hover:scale-105" title="Clique para decifrar">código</span> 
+                    <span class="text-slate-400 font-normal">para saber mais de verdade</span>."
+                </p>
+                
+                <!-- Decoração visual simulando terminal -->
+                <div class="mt-8 pt-6 border-t border-slate-700/30 flex justify-between text-xs font-mono text-slate-500">
+                    <span>ID: #9832-MYCORP</span>
+                    <span>PROTOCOLO: SECURE_ALPHA</span>
+                </div>
+            </div>
+            
+            <!-- Detalhe da ARG -->
+            <div class="text-center font-mono text-xs text-slate-600">
+                <p>© My Corporation, Inc. Nenhuma atividade de produção registrada desde 1998.</p>
+            </div>
+        </div>
+
+        <!-- ABA: LOGIN (Agora de forma totalmente confiável e sem sumir) -->
+        <div id="tab-login" class="hidden space-y-6 max-w-md mx-auto w-full">
+            <div class="bg-corp-800 border border-slate-800 rounded-xl p-8 text-center space-y-6 glow-border">
+                <div class="w-16 h-16 mx-auto bg-corp-glow/10 rounded-full flex items-center justify-center text-corp-glow text-2xl font-mono">
+                    🔒
+                </div>
+                <div class="space-y-2">
+                    <h2 class="text-xl font-bold text-white font-mono">Autenticação Necessária</h2>
+                    <p class="text-xs text-slate-400 font-mono">Dica de segurança: Digite o ano de fundação da My Corporation.</p>
+                </div>
+
+                <form onsubmit="verifyPassword(event)" class="space-y-4">
+                    <div class="relative">
+                        <input type="text" id="corp-password" autocomplete="off" placeholder="Digite a chave numérica..." 
+                               class="w-full bg-corp-900 border border-slate-700 rounded-lg px-4 py-3 text-center text-corp-glow placeholder:text-slate-600 font-mono focus:outline-none focus:border-corp-glow focus:ring-1 focus:ring-corp-glow transition-all">
+                    </div>
+                    <button type="submit" 
+                            class="w-full bg-corp-glow hover:bg-emerald-400 text-corp-900 font-bold py-3 rounded-lg font-mono transition-all duration-300 tracking-wider">
+                        DESBLOQUEAR ACESSO
+                    </button>
+                </form>
+
+                <p id="login-error" class="text-corp-alert text-xs font-mono min-h-[1rem] opacity-0 transition-opacity"></p>
+
+                <button onclick="switchTab('home')" class="text-xs text-slate-500 hover:text-slate-400 underline font-mono">
+                    Retornar ao início seguro
+                </button>
+            </div>
+        </div>
+
+        <!-- ABA: CÓDIGO -->
+        <div id="tab-codigo" class="hidden space-y-8">
+            <!-- Header da Aba de Código -->
+            <div class="flex items-center space-x-4 border-b border-slate-800 pb-4">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-corp-glow font-mono font-bold border border-corp-glow/30">
+                    &gt;_
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-white font-mono tracking-wide">Base de Dados de Criptografia</h2>
+                    <p class="text-xs text-slate-500 font-mono">Status: Acesso Autorizado / Protocolo ABABABABTRES</p>
+                </div>
+            </div>
+
+            <!-- Bloco de Explicação -->
+            <div class="bg-corp-800 border border-slate-800 rounded-xl p-8 space-y-6">
+                <p class="text-lg leading-relaxed text-slate-300 font-mono">
+                    "O código <span class="text-corp-glow font-bold">ABABABABTRES</span> funciona bem assim: o número daquela letra no alfabeto vai virar a letra que tá 5 posições depois dela, contando com ela mesma. Ou seja, a letra <span class="text-corp-glow font-bold">A</span> vira <span class="text-corp-glow font-bold">E</span> no código ABABABABTRES, <span class="text-corp-glow font-bold">B</span> vira <span class="text-corp-glow font-bold">F</span>, <span class="text-corp-glow font-bold">Z</span> vira <span class="text-corp-glow font-bold">D</span>, e por aí vai... Deu pra entender a lógica, né? (Pelo menos eu acho que sim)."
+                </p>
+
+                <!-- Botão Segredo "Eu sou burro..." -->
+                <div class="pt-4 text-center border-t border-slate-700/30">
+                    <button onclick="toggleDecoder()" 
+                            class="text-sm text-slate-500 hover:text-corp-glow underline hover:no-underline font-mono transition-colors">
+                        " Eu sou burro e não entendi. "
+                    </button>
+                </div>
+            </div>
+
+            <!-- Seção Oculta: Painel do Criador e Decodificador (Duplo Propósito!) -->
+            <div id="decoder-panel" class="hidden bg-corp-900 border border-slate-800 rounded-xl p-6 space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <span class="text-xs font-mono text-corp-glow tracking-widest">// PAINEL DE CODIFICAÇÃO & DESVIO</span>
+                    <span class="text-[10px] font-mono text-slate-500 bg-slate-800 px-2 py-0.5 rounded">MODO: MANUAL LOCAL</span>
+                </div>
+
+                <!-- Seletor de Abas Interno (Codificar ou Decodificar) -->
+                <div class="flex border-b border-slate-800 font-mono text-xs">
+                    <button id="btn-mode-decode" onclick="setToolMode('decode')" class="px-4 py-2 text-corp-glow border-b-2 border-corp-glow font-bold">
+                        [ Decodificar: Código &rarr; Palavra Normal ]
+                    </button>
+                    <button id="btn-mode-encode" onclick="setToolMode('encode')" class="px-4 py-2 text-slate-500 hover:text-slate-300">
+                        [ Codificar: Criar pista para minha ARG &rarr; Código ]
+                    </button>
+                </div>
+
+                <!-- Formulário Dinâmico -->
+                <div class="space-y-4">
+                    <div>
+                        <label id="input-label" class="block text-xs font-mono text-slate-400 mb-2">
+                            Digite as palavras em ABABABABTRES para traduzir na hora:
+                        </label>
+                        <textarea id="translator-input" oninput="runTranslator()" rows="3" placeholder="Digite aqui..."
+                                  class="w-full bg-corp-800 border border-slate-700 rounded-lg p-4 font-mono text-corp-glow focus:outline-none focus:border-corp-glow transition-all uppercase"></textarea>
+                    </div>
+
+                    <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-800">
+                        <span id="output-label" class="block text-[10px] font-mono text-slate-500 uppercase mb-1">
+                            Tradução para Palavra Normal:
+                        </span>
+                        <div id="translator-output" class="font-mono text-white text-lg tracking-wider min-h-[1.5rem] break-all">
+                            <span class="text-slate-600 italic text-sm">Esperando você digitar algo...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabela de Referência Rápida para imersão -->
+                <div class="text-xs font-mono text-slate-500 space-y-2 bg-corp-800/40 p-4 rounded-lg">
+                    <p class="font-bold text-slate-400">Guia de Conversão Visual:</p>
+                    <div class="grid grid-cols-2 gap-2 text-[11px]">
+                        <div>A &rarr; E | B &rarr; F | C &rarr; G | D &rarr; H</div>
+                        <div>Z &rarr; D | Y &rarr; C | X &rarr; B | W &rarr; A</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="border-t border-slate-800 py-6 bg-corp-950 text-center text-xs font-mono text-slate-600">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 font-mono">
+            <span>MY CORPORATION CORE DATABASE V1.0.98</span>
+            <div class="flex space-x-4">
+                <span class="hover:text-slate-400 cursor-pointer" onclick="switchTab('home')">Início</span>
+                <span>•</span>
+                <span class="hover:text-slate-400 cursor-pointer" onclick="switchTab('codigo')">Código Secreto</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notificação Flutuante de Sucesso/Erro -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-corp-800 border border-corp-glow text-corp-glow px-4 py-3 rounded-lg shadow-lg font-mono text-sm transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none z-50">
+        Acesso Concedido.
+    </div>
+
+    <!-- Script com a lógica da ARG -->
+    <script>
+        // Controle de estado
+        let isUnlocked = false;
+        let currentToolMode = 'decode'; // 'decode' ou 'encode'
+
+        // Alternância segura de abas sem bugs de transição
+        function switchTab(tabName) {
+            const tabHome = document.getElementById('tab-home');
+            const tabLogin = document.getElementById('tab-login');
+            const tabCodigo = document.getElementById('tab-codigo');
+
+            const navHome = document.getElementById('nav-home');
+            const navCodigo = document.getElementById('nav-codigo');
+
+            // Limpa classes de navegação
+            navHome.className = "px-4 py-2 rounded text-slate-400 hover:text-white transition-all";
+            navCodigo.className = "px-4 py-2 rounded text-slate-400 hover:text-white transition-all relative";
+
+            // Oculta tudo por padrão
+            tabHome.classList.replace('block', 'hidden');
+            tabLogin.classList.replace('block', 'hidden');
+            tabCodigo.classList.replace('block', 'hidden');
+
+            if (tabName === 'home') {
+                tabHome.classList.replace('hidden', 'block');
+                navHome.className = "px-4 py-2 rounded text-corp-glow bg-corp-700/50 border border-corp-glow/30 transition-all";
+            } 
+            else if (tabName === 'codigo') {
+                if (isUnlocked) {
+                    tabCodigo.classList.replace('hidden', 'block');
+                    navCodigo.className = "px-4 py-2 rounded text-corp-glow bg-corp-700/50 border border-corp-glow/30 transition-all relative";
+                } else {
+                    tabLogin.classList.replace('hidden', 'block');
+                    setTimeout(() => {
+                        document.getElementById('corp-password').focus();
+                    }, 50);
+                }
+            }
+        }
+
+        function triggerCodeTabRedirect() {
+            switchTab('codigo');
+        }
+
+        // Verificação de senha robusta local
+        function verifyPassword(event) {
+            event.preventDefault();
+            const passInput = document.getElementById('corp-password');
+            const errorText = document.getElementById('login-error');
+
+            if (passInput.value.trim() === '1998') {
+                isUnlocked = true;
+                errorText.classList.add('opacity-0');
+                showToast("ACESSO CONCEDIDO - BEM-VINDO");
+                
+                // Limpa input e navega
+                passInput.value = '';
+                switchTab('codigo');
+            } else {
+                errorText.innerText = "❌ ERRO: Chave incorreta para o protocolo.";
+                errorText.classList.remove('opacity-0');
+                passInput.classList.add('border-corp-alert');
+                
+                // Efeito visual de erro
+                passInput.classList.add('animate-pulse');
+                setTimeout(() => {
+                    passInput.classList.remove('animate-pulse');
+                }, 300);
+            }
+        }
+
+        // Feedback visual toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Mostra ou esconde o decodificador secreto
+        function toggleDecoder() {
+            const panel = document.getElementById('decoder-panel');
+            if (panel.classList.contains('hidden')) {
+                panel.classList.remove('hidden');
+                setTimeout(() => {
+                    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 50);
